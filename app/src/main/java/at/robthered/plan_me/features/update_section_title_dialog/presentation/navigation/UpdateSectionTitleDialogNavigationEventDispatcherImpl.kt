@@ -1,0 +1,7 @@
+package at.robthered.plan_me.features.update_section_title_dialog.presentation.navigation
+
+import at.robthered.plan_me.features.common.presentation.navigation.BaseNavigationEventDispatcher
+
+class UpdateSectionTitleDialogNavigationEventDispatcherImpl :
+    BaseNavigationEventDispatcher<UpdateSectionTitleDialogNavigationEvent>(),
+    UpdateSectionTitleDialogNavigationEventDispatcher

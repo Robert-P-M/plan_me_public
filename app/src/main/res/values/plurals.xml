@@ -1,0 +1,11 @@
+<resources>
+    <plurals name="task_details_dialog_subtasks">
+        <item quantity="zero">No subtasks</item>
+        <item quantity="one">%1$d Subtask</item>
+        <item quantity="other">%1$d Subtasks</item>
+    </plurals>
+    <plurals name="task_statistics_item_add_hashtags">
+        <item quantity="one">You\'ve added this hashtag:\n</item>
+        <item quantity="other">You\'ve added these hashtags:\n</item>
+    </plurals>
+</resources>
