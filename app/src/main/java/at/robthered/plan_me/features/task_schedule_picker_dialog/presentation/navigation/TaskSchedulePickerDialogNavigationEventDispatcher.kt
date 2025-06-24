@@ -1,0 +1,6 @@
+package at.robthered.plan_me.features.task_schedule_picker_dialog.presentation.navigation
+
+import at.robthered.plan_me.features.common.presentation.navigation.NavigationEventDispatcher
+
+interface TaskSchedulePickerDialogNavigationEventDispatcher
+    : NavigationEventDispatcher<TaskSchedulePickerDialogNavigationEvent>

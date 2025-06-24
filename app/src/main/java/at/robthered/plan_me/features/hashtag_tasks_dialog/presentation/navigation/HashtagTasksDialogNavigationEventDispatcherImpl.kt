@@ -1,0 +1,7 @@
+package at.robthered.plan_me.features.hashtag_tasks_dialog.presentation.navigation
+
+import at.robthered.plan_me.features.common.presentation.navigation.BaseNavigationEventDispatcher
+
+class HashtagTasksDialogNavigationEventDispatcherImpl :
+    BaseNavigationEventDispatcher<HashtagTasksDialogNavigationEvent>(),
+    HashtagTasksDialogNavigationEventDispatcher

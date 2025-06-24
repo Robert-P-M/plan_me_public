@@ -1,0 +1,6 @@
+package at.robthered.plan_me.features.add_section_dialog.presentation.navigation
+
+import at.robthered.plan_me.features.common.presentation.navigation.NavigationEventDispatcher
+
+interface AddSectionDialogNavigationEventDispatcher :
+    NavigationEventDispatcher<AddSectionDialogNavigationEvent>

@@ -1,0 +1,170 @@
+[versions]
+agp = "8.10.1"
+kotlin = "2.1.21"
+ksp = "2.1.21-2.0.1"
+kotlin-parcelize = "2.1.21"
+
+coreKtx = "1.16.0"
+lifecycleRuntimeKtx = "2.9.1"
+activityCompose = "1.10.1"
+
+composeBom = "2025.06.00"
+material3-alpha = "1.4.0-alpha15"
+uiTextGoogleFonts = "1.8.2"
+accompanist = "0.37.3"
+
+navigation-compose = "2.9.0"
+
+room = "2.7.1"
+paging = "3.3.6"
+kotlinx-serialization = "1.8.1"
+kotlinx-datetime = "0.6.2"
+
+koin = "4.0.4"
+
+junit4 = "4.13.2"
+
+junit-jupiter = "5.13.1"
+junit-platform = "1.13.1"
+
+androidxJunit = "1.2.1"
+espressoCore = "3.6.1"
+
+mockk = "1.14.2"
+truth = "1.4.4"
+turbine = "1.2.0"
+coroutines-test = "1.10.2"
+appcompat = "1.7.1"
+material = "1.12.0"
+junitKtx = "1.2.1"
+
+kotest = "5.9.1"
+
+robolectric = "4.14.1"
+
+robolectric-extension-extension-gradle-plugin = "0.9.0"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3-alpha" }
+androidx-compose-material-material-icons-core = { group = "androidx.compose.material", name = "material-icons-core" }
+androidx-compose-material-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
+androidx-compose-ui-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "uiTextGoogleFonts" }
+google-accompanist-accompanist-permissions = { group = "com.google.accompanist", name = "accompanist-permissions", version.ref = "accompanist" }
+
+androidx-navigation-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation-compose" }
+
+androidx-room-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+androidx-room-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+androidx-room-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+androidx-room-room-paging = { group = "androidx.room", name = "room-paging", version.ref = "room" }
+androidx-paging-paging-runtime = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "paging" }
+androidx-paging-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "paging" }
+jetbrains-kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+jetbrains-kotlinx-kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinx-datetime" }
+
+koin-koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
+koin-koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
+koin-koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin" }
+koin-koin-compose = { group = "io.insert-koin", name = "koin-compose", version.ref = "koin" }
+koin-koin-compose-viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmodel", version.ref = "koin" }
+
+
+junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
+
+junit5-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junit-jupiter" }
+junit5-jupiter-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit-jupiter" }
+junit5-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit-jupiter" }
+junit5-vintage-engine = { group = "org.junit.vintage", name = "junit-vintage-engine", version.ref = "junit-jupiter" }
+junit5-platform-launcher = { group = "org.junit.platform", name = "junit-platform-launcher", version.ref = "junit-platform" }
+junit5-platform-commons = { group = "org.junit.platform", name = "junit-platform-commons", version.ref = "junit-platform" }
+
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxJunit" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines-test" }
+google-truth-truth = { group = "com.google.truth", name = "truth", version.ref = "truth" }
+test-turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+androidx-room-room-testing = { group = "androidx.room", name = "room-testing", version.ref = "room" }
+koin-koin-test-junit4 = { group = "io.insert-koin", name = "koin-test-junit4", version.ref = "koin" }
+koin-koin-test-junit5 = { group = "io.insert-koin", name = "koin-test-junit5", version.ref = "koin" }
+
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "junitKtx" }
+
+kotest-runner-junit5 = { group = "io.kotest", name = "kotest-runner-junit5", version.ref = "kotest" }
+kotest-assertions-core = { group = "io.kotest", name = "kotest-assertions-core", version.ref = "kotest" }
+kotest-property = { group = "io.kotest", name = "kotest-property", version.ref = "kotest" }
+
+mockk-core = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+mockk-agent = { group = "io.mockk", name = "mockk-agent", version.ref = "mockk" }
+mockk-android = { group = "io.mockk", name = "mockk-android", version.ref = "mockk" }
+mockk-agent-jvm = { group = "io.mockk", name = "mockk-agent-jvm", version.ref = "mockk" }
+
+robolectric-robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectric" }
+
+
+[bundles]
+koin = [
+    "koin-koin-core",
+    "koin-koin-android",
+    "koin-koin-androidx-compose",
+    "koin-koin-compose",
+    "koin-koin-compose-viewmodel"
+]
+
+unitTestLibs = [
+    "androidx-espresso-core",
+    "androidx-junit-ktx",
+    "junit4",
+    "kotest-runner-junit5",
+    "kotest-assertions-core",
+    "kotest-property",
+    "mockk-core",
+    "mockk-agent",
+    "kotlinx-coroutines-test",
+    "google-truth-truth",
+    "test-turbine",
+    "androidx-room-room-testing",
+    "koin-koin-test-junit4",
+    "robolectric-robolectric",
+    "koin-koin-test-junit5"
+]
+
+androidTestLibs = [
+    "androidx-espresso-core",
+    "androidx-junit-ktx",
+    "androidx-junit",
+    "junit4",
+    "mockk-android",
+    "mockk-agent",
+    "kotlinx-coroutines-test",
+    "google-truth-truth",
+    "koin-koin-test-junit4"
+]
+
+uiTestLibs = [
+    "androidx-ui-test-junit4",
+    "androidx-ui-test-manifest"
+]
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+jetbrains-kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+androidx-room = { id = "androidx.room", version.ref = "room" }
+google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+kotlin-parcelize-plugin = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin-parcelize" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+robolectric-extension-gradle-plugin = { id = "tech.apter.junit5.jupiter.robolectric-extension-gradle-plugin", version.ref = "robolectric-extension-extension-gradle-plugin" }
