@@ -1,0 +1,12 @@
+{
+  "taskId": 1,
+  "title": "Test Task",
+  "description": "A description",
+  "priorityEnum": "MEDIUM",
+  "completed": true,
+  "archived": true,
+  "sectionId": null,
+  "parentTaskId": null,
+  "createdAt": 1678886400000,
+  "updatedAt": 1678886400000
+}

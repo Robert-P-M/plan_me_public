@@ -1,0 +1,6 @@
+package at.robthered.plan_me.features.update_hashtag_name_dialog.presentation.navigation
+
+import at.robthered.plan_me.features.common.presentation.navigation.NavigationEventDispatcher
+
+interface UpdateHashtagNameDialogNavigationEventDispatcher :
+    NavigationEventDispatcher<UpdateHashtagNameDialogNavigationEvent>

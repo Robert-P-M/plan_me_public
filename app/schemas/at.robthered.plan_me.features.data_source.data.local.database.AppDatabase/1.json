@@ -1,0 +1,854 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "dc02173e7e06e5038a96a6e5dbc2318c",
+    "entities": [
+      {
+        "tableName": "section",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`section_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `created_at` INTEGER NOT NULL, `updated_at` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "sectionId",
+            "columnName": "section_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAt",
+            "columnName": "updated_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "section_id"
+          ]
+        }
+      },
+      {
+        "tableName": "section_title_history",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`section_title_history_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `section_id` INTEGER NOT NULL, `text` TEXT NOT NULL, `created_at` INTEGER NOT NULL, FOREIGN KEY(`section_id`) REFERENCES `section`(`section_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "sectionTitleHistoryId",
+            "columnName": "section_title_history_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sectionId",
+            "columnName": "section_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "text",
+            "columnName": "text",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "section_title_history_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_section_title_history_section_id",
+            "unique": false,
+            "columnNames": [
+              "section_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_section_title_history_section_id` ON `${TABLE_NAME}` (`section_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "section",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "section_id"
+            ],
+            "referencedColumns": [
+              "section_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "task",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`task_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `parent_task_id` INTEGER, `section_id` INTEGER, `title` TEXT NOT NULL, `description` TEXT, `priority_enum` TEXT, `completed` INTEGER NOT NULL, `archived` INTEGER NOT NULL, `created_at` INTEGER NOT NULL, `updated_at` INTEGER NOT NULL, `current_task_schedule_event_task_schedule_event_id` INTEGER, `current_task_schedule_event_task_id` INTEGER, `current_task_schedule_event_start_date_in_epoch_days` INTEGER, `current_task_schedule_event_time_of_day_in_minutes` INTEGER, `current_task_schedule_event_is_notification_enabled` INTEGER, `current_task_schedule_event_duration_in_minutes` INTEGER, `current_task_schedule_event_is_full_day` INTEGER, `current_task_schedule_event_created_at` INTEGER, FOREIGN KEY(`section_id`) REFERENCES `section`(`section_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`parent_task_id`) REFERENCES `task`(`task_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "taskId",
+            "columnName": "task_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "parentTaskId",
+            "columnName": "parent_task_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "sectionId",
+            "columnName": "section_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "priorityEnum",
+            "columnName": "priority_enum",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "isCompleted",
+            "columnName": "completed",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isArchived",
+            "columnName": "archived",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAt",
+            "columnName": "updated_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "taskSchedule.taskScheduleEventId",
+            "columnName": "current_task_schedule_event_task_schedule_event_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "taskSchedule.taskId",
+            "columnName": "current_task_schedule_event_task_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "taskSchedule.startDateInEpochDays",
+            "columnName": "current_task_schedule_event_start_date_in_epoch_days",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "taskSchedule.timeOfDayInMinutes",
+            "columnName": "current_task_schedule_event_time_of_day_in_minutes",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "taskSchedule.isNotificationEnabled",
+            "columnName": "current_task_schedule_event_is_notification_enabled",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "taskSchedule.durationInMinutes",
+            "columnName": "current_task_schedule_event_duration_in_minutes",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "taskSchedule.isFullDay",
+            "columnName": "current_task_schedule_event_is_full_day",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "taskSchedule.createdAt",
+            "columnName": "current_task_schedule_event_created_at",
+            "affinity": "INTEGER"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "task_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_task_section_id",
+            "unique": false,
+            "columnNames": [
+              "section_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_task_section_id` ON `${TABLE_NAME}` (`section_id`)"
+          },
+          {
+            "name": "index_task_parent_task_id",
+            "unique": false,
+            "columnNames": [
+              "parent_task_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_task_parent_task_id` ON `${TABLE_NAME}` (`parent_task_id`)"
+          },
+          {
+            "name": "index_task_current_task_schedule_event_task_id",
+            "unique": false,
+            "columnNames": [
+              "current_task_schedule_event_task_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_task_current_task_schedule_event_task_id` ON `${TABLE_NAME}` (`current_task_schedule_event_task_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "section",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "section_id"
+            ],
+            "referencedColumns": [
+              "section_id"
+            ]
+          },
+          {
+            "table": "task",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "parent_task_id"
+            ],
+            "referencedColumns": [
+              "task_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "task_completed_history",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`task_completed_history_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `task_id` INTEGER NOT NULL, `is_completed` INTEGER NOT NULL, `created_at` INTEGER NOT NULL, FOREIGN KEY(`task_id`) REFERENCES `task`(`task_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "taskCompletedHistoryId",
+            "columnName": "task_completed_history_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "taskId",
+            "columnName": "task_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isCompleted",
+            "columnName": "is_completed",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "task_completed_history_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_task_completed_history_task_id",
+            "unique": false,
+            "columnNames": [
+              "task_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_task_completed_history_task_id` ON `${TABLE_NAME}` (`task_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "task",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "task_id"
+            ],
+            "referencedColumns": [
+              "task_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "task_archived_history",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`task_archived_history_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `task_id` INTEGER NOT NULL, `is_archived` INTEGER NOT NULL, `created_at` INTEGER NOT NULL, FOREIGN KEY(`task_id`) REFERENCES `task`(`task_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "taskArchivedHistoryId",
+            "columnName": "task_archived_history_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "taskId",
+            "columnName": "task_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isArchived",
+            "columnName": "is_archived",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "task_archived_history_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_task_archived_history_task_id",
+            "unique": false,
+            "columnNames": [
+              "task_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_task_archived_history_task_id` ON `${TABLE_NAME}` (`task_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "task",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "task_id"
+            ],
+            "referencedColumns": [
+              "task_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "task_title_history",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`task_title_history_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `task_id` INTEGER NOT NULL, `text` TEXT NOT NULL, `created_at` INTEGER NOT NULL, FOREIGN KEY(`task_id`) REFERENCES `task`(`task_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "taskTitleHistoryId",
+            "columnName": "task_title_history_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "taskId",
+            "columnName": "task_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "text",
+            "columnName": "text",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "task_title_history_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_task_title_history_task_id",
+            "unique": false,
+            "columnNames": [
+              "task_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_task_title_history_task_id` ON `${TABLE_NAME}` (`task_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "task",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "task_id"
+            ],
+            "referencedColumns": [
+              "task_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "task_description_history",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`task_description_history_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `task_id` INTEGER NOT NULL, `text` TEXT, `created_at` INTEGER NOT NULL, FOREIGN KEY(`task_id`) REFERENCES `task`(`task_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "taskDescriptionHistoryId",
+            "columnName": "task_description_history_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "taskId",
+            "columnName": "task_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "text",
+            "columnName": "text",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "task_description_history_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_task_description_history_task_id",
+            "unique": false,
+            "columnNames": [
+              "task_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_task_description_history_task_id` ON `${TABLE_NAME}` (`task_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "task",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "task_id"
+            ],
+            "referencedColumns": [
+              "task_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "task_priority_history",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`task_priority_history_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `task_id` INTEGER NOT NULL, `priority_enum` TEXT, `created_at` INTEGER NOT NULL, FOREIGN KEY(`task_id`) REFERENCES `task`(`task_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "taskPriorityId",
+            "columnName": "task_priority_history_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "taskId",
+            "columnName": "task_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "priorityEnum",
+            "columnName": "priority_enum",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "task_priority_history_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_task_priority_history_task_id",
+            "unique": false,
+            "columnNames": [
+              "task_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_task_priority_history_task_id` ON `${TABLE_NAME}` (`task_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "task",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "task_id"
+            ],
+            "referencedColumns": [
+              "task_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "hashtag",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`hashtag_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `created_at` INTEGER NOT NULL, `updated_at` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "hashtagId",
+            "columnName": "hashtag_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAt",
+            "columnName": "updated_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "hashtag_id"
+          ]
+        }
+      },
+      {
+        "tableName": "hashtag_name_history",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`hashtag_name_history_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `hashtag_id` INTEGER NOT NULL, `text` TEXT NOT NULL, `created_at` INTEGER NOT NULL, FOREIGN KEY(`hashtag_id`) REFERENCES `hashtag`(`hashtag_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "hashtagNameHistoryId",
+            "columnName": "hashtag_name_history_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hashtagId",
+            "columnName": "hashtag_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "text",
+            "columnName": "text",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "hashtag_name_history_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_hashtag_name_history_hashtag_id",
+            "unique": false,
+            "columnNames": [
+              "hashtag_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_hashtag_name_history_hashtag_id` ON `${TABLE_NAME}` (`hashtag_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "hashtag",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "hashtag_id"
+            ],
+            "referencedColumns": [
+              "hashtag_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "task_hashtags_cross_ref",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`task_id` INTEGER NOT NULL, `hashtag_id` INTEGER NOT NULL, `created_at` INTEGER NOT NULL, PRIMARY KEY(`task_id`, `hashtag_id`), FOREIGN KEY(`task_id`) REFERENCES `task`(`task_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`hashtag_id`) REFERENCES `hashtag`(`hashtag_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "taskId",
+            "columnName": "task_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hashtagId",
+            "columnName": "hashtag_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "task_id",
+            "hashtag_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_task_hashtags_cross_ref_task_id",
+            "unique": false,
+            "columnNames": [
+              "task_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_task_hashtags_cross_ref_task_id` ON `${TABLE_NAME}` (`task_id`)"
+          },
+          {
+            "name": "index_task_hashtags_cross_ref_hashtag_id",
+            "unique": false,
+            "columnNames": [
+              "hashtag_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_task_hashtags_cross_ref_hashtag_id` ON `${TABLE_NAME}` (`hashtag_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "task",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "task_id"
+            ],
+            "referencedColumns": [
+              "task_id"
+            ]
+          },
+          {
+            "table": "hashtag",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "hashtag_id"
+            ],
+            "referencedColumns": [
+              "hashtag_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "hashtag_fts",
+        "createSql": "CREATE VIRTUAL TABLE IF NOT EXISTS `${TABLE_NAME}` USING FTS4(`name` TEXT NOT NULL, content=`hashtag`)",
+        "fields": [
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": []
+        },
+        "ftsVersion": "FTS4",
+        "ftsOptions": {
+          "tokenizer": "simple",
+          "tokenizerArgs": [],
+          "contentTable": "hashtag",
+          "languageIdColumnName": "",
+          "matchInfo": "FTS4",
+          "notIndexedColumns": [],
+          "prefixSizes": [],
+          "preferredOrder": "ASC"
+        },
+        "contentSyncTriggers": [
+          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_hashtag_fts_BEFORE_UPDATE BEFORE UPDATE ON `hashtag` BEGIN DELETE FROM `hashtag_fts` WHERE `docid`=OLD.`rowid`; END",
+          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_hashtag_fts_BEFORE_DELETE BEFORE DELETE ON `hashtag` BEGIN DELETE FROM `hashtag_fts` WHERE `docid`=OLD.`rowid`; END",
+          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_hashtag_fts_AFTER_UPDATE AFTER UPDATE ON `hashtag` BEGIN INSERT INTO `hashtag_fts`(`docid`, `name`) VALUES (NEW.`rowid`, NEW.`name`); END",
+          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_hashtag_fts_AFTER_INSERT AFTER INSERT ON `hashtag` BEGIN INSERT INTO `hashtag_fts`(`docid`, `name`) VALUES (NEW.`rowid`, NEW.`name`); END"
+        ]
+      },
+      {
+        "tableName": "task_schedule_event",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`task_schedule_event_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `task_id` INTEGER NOT NULL, `start_date_in_epoch_days` INTEGER NOT NULL, `time_of_day_in_minutes` INTEGER, `is_notification_enabled` INTEGER NOT NULL, `duration_in_minutes` INTEGER, `is_full_day` INTEGER NOT NULL, `created_at` INTEGER NOT NULL, FOREIGN KEY(`task_id`) REFERENCES `task`(`task_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "taskScheduleEventId",
+            "columnName": "task_schedule_event_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "taskId",
+            "columnName": "task_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startDateInEpochDays",
+            "columnName": "start_date_in_epoch_days",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timeOfDayInMinutes",
+            "columnName": "time_of_day_in_minutes",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "isNotificationEnabled",
+            "columnName": "is_notification_enabled",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "durationInMinutes",
+            "columnName": "duration_in_minutes",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "isFullDay",
+            "columnName": "is_full_day",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "task_schedule_event_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_task_schedule_event_task_id",
+            "unique": false,
+            "columnNames": [
+              "task_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_task_schedule_event_task_id` ON `${TABLE_NAME}` (`task_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "task",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "task_id"
+            ],
+            "referencedColumns": [
+              "task_id"
+            ]
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'dc02173e7e06e5038a96a6e5dbc2318c')"
+    ]
+  }
+}
